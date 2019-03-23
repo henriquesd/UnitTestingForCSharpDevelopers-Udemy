@@ -1,23 +1,37 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// Microsoft Unit Test Framework;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestNinja.Fundamentals;
+using NUnit.Framework;
 
 namespace TestNinja.UnitTests
 {
-    [TestClass]
+    // Microsoft Unit Test Framework;
+    // [TestClass]
+
+    // NUnit;
+    [TestFixture]
     public class ReservationTests
     {
-        [TestMethod]
+        // Microsoft Unit Test Framework;
+        // [TestMethod]
+
+        // NUnit;
+        [Test]
         public void CanBeCancelledBy_UserIsAdmin_ReturnsTrue()
         {
+            // Arrange
             var reservation = new Reservation();
 
+            // Act
             var result = reservation.CanBeCancelledBy(new User { IsAdmin = true });
 
-            Assert.IsTrue(result);
+            // Assert (three way of doing it)
+            // Assert.IsTrue(result);
+            Assert.That(result, Is.True);
+            // Assert.That(result == true);
         }
 
-        [TestMethod]
+        [Test]
         public void CanBeCancelledBy_UserIsNotAdmin_ReturnsFalse()
         {
             var reservation = new Reservation();
@@ -27,7 +41,7 @@ namespace TestNinja.UnitTests
             Assert.IsFalse(result);
         }
 
-        [TestMethod]
+        [Test]
         public void CanBeCancelledBy_MadeByUser_ReturnsTrue()
         {
             var user = new User();
@@ -39,8 +53,7 @@ namespace TestNinja.UnitTests
             Assert.IsTrue(result);
         }
 
-
-        [TestMethod]
+        [Test]
         public void CanBeCancelledBy_AnotherUser_ReturnsFalse()
         {
             var reservation = new Reservation { MadeBy = new User() };
