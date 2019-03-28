@@ -15,6 +15,9 @@ namespace TestNinja.UnitTests
         // Microsoft Unit Test Framework;
         // [TestMethod]
 
+
+        // [MethodName]_[Scenario]_[ExpectedBehaviour];
+
         // NUnit;
         [Test]
         public void CanBeCancelledBy_UserIsAdmin_ReturnsTrue()
