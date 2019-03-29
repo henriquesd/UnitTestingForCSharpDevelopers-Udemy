@@ -1,9 +1,4 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TestNinja.Fundamentals;
 
 namespace TestNinja.UnitTests
@@ -11,10 +6,12 @@ namespace TestNinja.UnitTests
     [TestFixture]
     public class FizzBuzzTests
     {
-        // se o número for dividido por 3 e 5 = FizzBuzz
-        // se o número for dividido por 3 = Fizz
-        // se o número for dividido por 5 = Buzz
-        // senão = numero
+        // Write your tests like a black box way: without see the method implementation code,
+            //  testing what it should do;
+        // If number is divided by 3 and 5 then return FizzBuzz
+        // If number is divided by 3 then return Fizz
+        // If number is divided by 5 then return Buzz
+        // Else return number;
 
         [Test]
         public void GetOutput_InputIsDivisibleBy3And5_ReturnFizzBuzz()
