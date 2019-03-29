@@ -49,5 +49,7 @@ namespace TestNinja.UnitTests
             // to test a method that raises an event;
             Assert.That(id, Is.Not.EqualTo(Guid.Empty));
         }
+
+     
     }
 }
