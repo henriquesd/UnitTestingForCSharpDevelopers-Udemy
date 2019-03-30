@@ -46,3 +46,8 @@ C:\Users\Henrique\source\repos\UnitTestingForCSharpDevelopers-Udemy\TestNinja.Un
 C:\Users\Henrique\source\repos\UnitTestingForCSharpDevelopers-Udemy\TestNinja.UnitTests\bin\Debug\Mono.Cecil.Pdb.dll
 C:\Users\Henrique\source\repos\UnitTestingForCSharpDevelopers-Udemy\TestNinja.UnitTests\bin\Debug\Mono.Cecil.Mdb.dll
 C:\Users\Henrique\source\repos\UnitTestingForCSharpDevelopers-Udemy\TestNinja.UnitTests\bin\Debug\Mono.Cecil.Rocks.dll
+C:\Users\Henrique\source\repos\UnitTestingForCSharpDevelopers-Udemy\TestNinja.UnitTests\bin\Debug\Castle.Core.dll
+C:\Users\Henrique\source\repos\UnitTestingForCSharpDevelopers-Udemy\TestNinja.UnitTests\bin\Debug\Moq.dll
+C:\Users\Henrique\source\repos\UnitTestingForCSharpDevelopers-Udemy\TestNinja.UnitTests\bin\Debug\Castle.Core.xml
+C:\Users\Henrique\source\repos\UnitTestingForCSharpDevelopers-Udemy\TestNinja.UnitTests\bin\Debug\Moq.pdb
+C:\Users\Henrique\source\repos\UnitTestingForCSharpDevelopers-Udemy\TestNinja.UnitTests\bin\Debug\Moq.xml
