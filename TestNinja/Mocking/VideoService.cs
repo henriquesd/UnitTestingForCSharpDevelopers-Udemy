@@ -1,13 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using Newtonsoft.Json;
+using static TestNinja.Mocking.VideoRepository;
 
 namespace TestNinja.Mocking
 {
     public class VideoService
     {
+        private IFileReader _fileReader;
+        private IVideoRepository _repository;
+
+        //public VideoService(IFileReader fileReader = null,
+        //      IVideoRepository repository = null)
+        //{
+        //    _fileReader = fileReader ?? new FileReader();
+        //    _repository = repository ?? new VideoRepository();
+        //}
+        public VideoService(IFileReader fileReader = null,
+                            IVideoRepository repository = null)
+        {
+            // _fileReader and _repository is used just in one method,
+            // for design perspective it's better to pass the dependency as a parameter to that method,
+            // but this feature may not be supported with the dependency injection framework you are using, so your only option might be constructor injection;
+            _fileReader = fileReader ?? new FileReader();
+            _repository = repository ?? new VideoRepository();
+        }
+
         // The commented codes shows implementation before refactor to a better code;
 
         //public string ReadVideoTitle()
@@ -48,7 +67,6 @@ namespace TestNinja.Mocking
         //}
 
 
-        private IFileReader _fileReader;
 
         // In the production code will use this constructor;
         //public VideoService()
@@ -79,14 +97,15 @@ namespace TestNinja.Mocking
         //    _fileReader = fileReader ?? new FileReader();
         //}
 
-        public VideoService(IFileReader fileReader)
-        {
-            // dependency injection framework will take care of creating and
-            // initializing objects runtime; examples of dependency injection frameworks:
-            // NInject; StructureMap; Spring.NET; Autofac; Unity; etc - almost all this frameworks follow the same principle;
-            // Mosh Hamedani recommend NInject or Autofac;
-            _fileReader = fileReader;
-        }
+
+        //public VideoService(IFileReader fileReader)
+        //{
+        //    // dependency injection framework will take care of creating and
+        //    // initializing objects runtime; examples of dependency injection frameworks:
+        //    // NInject; StructureMap; Spring.NET; Autofac; Unity; etc - almost all this frameworks follow the same principle;
+        //    // Mosh Hamedani recommend NInject or Autofac;
+        //    _fileReader = fileReader;
+        //}
 
         public string ReadVideoTitle()
         {
@@ -97,22 +116,34 @@ namespace TestNinja.Mocking
             return video.Title;
         }
 
+        // This commented code has been refactored on the method below;
+        //public string GetUnprocessedVideosAsCsv()
+        //{
+        //    var videoIds = new List<int>();
+
+        //    using (var context = new VideoContext())
+        //    {
+        //        var videos =
+        //            (from video in context.Videos
+        //             where !video.IsProcessed
+        //             select video).ToList();
+
+        //        foreach (var v in videos)
+        //            videoIds.Add(v.Id);
+
+        //        return String.Join(",", videoIds);
+        //    }
+        //}
+
         public string GetUnprocessedVideosAsCsv()
         {
             var videoIds = new List<int>();
 
-            using (var context = new VideoContext())
-            {
-                var videos =
-                    (from video in context.Videos
-                     where !video.IsProcessed
-                     select video).ToList();
+            var videos = _repository.GetUnprocessedVideos();
+            foreach (var v in videos)
+                videoIds.Add(v.Id);
 
-                foreach (var v in videos)
-                    videoIds.Add(v.Id);
-
-                return String.Join(",", videoIds);
-            }
+            return String.Join(",", videoIds);
         }
     }
 
