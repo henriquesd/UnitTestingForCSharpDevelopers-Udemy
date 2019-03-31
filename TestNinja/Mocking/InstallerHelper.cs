@@ -4,14 +4,19 @@ namespace TestNinja.Mocking
 {
     public class InstallerHelper
     {
+        private readonly IFileDownloader _fileDownloader;
         private string _setupDestinationFile;
+
+        public InstallerHelper(IFileDownloader fileDownloader)
+        {
+            _fileDownloader = fileDownloader;
+        }
 
         public bool DownloadInstaller(string customerName, string installerName)
         {
-            var client = new WebClient();
             try
             {
-                client.DownloadFile(
+                _fileDownloader.DownloadFile(
                     string.Format("http://example.com/{0}/{1}",
                         customerName,
                         installerName),
@@ -24,5 +29,25 @@ namespace TestNinja.Mocking
                 return false; 
             }
         }
+
+        // The commented code below was the original code before been refactored (when the FileDownloader class didn't exists yet);
+        //public bool DownloadInstaller(string customerName, string installerName)
+        //{
+        //    var client = new WebClient();
+        //    try
+        //    {
+        //        client.DownloadFile(
+        //            string.Format("http://example.com/{0}/{1}",
+        //                customerName,
+        //                installerName),
+        //            _setupDestinationFile);
+
+        //        return true;
+        //    }
+        //    catch (WebException)
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using Newtonsoft.Json;
-using static TestNinja.Mocking.VideoRepository;
 
 namespace TestNinja.Mocking
 {

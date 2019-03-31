@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using TestNinja.Mocking;
-using static TestNinja.Mocking.VideoRepository;
 
 namespace TestNinja.UnitTests.Mocking
 {
